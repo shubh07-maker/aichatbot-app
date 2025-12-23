@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 from google import genai
 
-client = genai.Client(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="AIzaSyAjUX_hXQ9FgAM24BY2XphoDWXaqqDEbk8")
 
 response = client.models.generate_content(
     model="gemini-2.5-flash", contents="Explain how AI works in a few words"
@@ -59,5 +59,6 @@ if user_input := st.chat_input("Type your message here..."):
         except Exception as e:
 
             st.error(f"An error occurred: {e}")
+
 
 
