@@ -1,10 +1,18 @@
 import streamlit as st
 import google.generativeai as genai
+from google import genai
+
+client = genai.Client(api_key="YOUR_API_KEY")
+
+response = client.models.generate_content(
+    model="gemini-2.5-flash", contents="Explain how AI works in a few words"
+)
+print(response.text)
 
 # --- CONFIGURATION ---
 # Replace with your actual API Key
 # This grabs the key securely from the Streamlit Cloud safe
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+
 
 # We are switching to 'gemini-pro' because it is the most stable model 
 # and avoids the "404 not found" error you were seeing.
@@ -51,4 +59,5 @@ if user_input := st.chat_input("Type your message here..."):
         except Exception as e:
 
             st.error(f"An error occurred: {e}")
+
 
